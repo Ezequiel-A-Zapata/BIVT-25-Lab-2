@@ -13,16 +13,31 @@ namespace Lab2
 
             // code here
 
+            double exp = 1.0; 
+            for (int i = 1; i <= n; i++)
+            {
+                double top = Math.Sin(i * x);
+                answer += top / exp;   
+                exp *= x;              
+            }
+
             // end
 
-            return answer;
+                return answer;
         }
         public double Task2(int n)
         {
             double answer = 0;
 
             // code here
-
+            int num = 5;
+            int fact = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                num *= 5;
+                fact += i;
+            }
+            answer = num / fact;
             // end
 
             return answer;
@@ -33,16 +48,44 @@ namespace Lab2
 
             // code here
 
+            int sum = 0;
+            int firstnum = 1;
+            int secondnum = 0;
+            if (n == 0)
+            {
+                answer = 0;
+            }
+            else if (n == 1)
+            {
+                answer = 1;
+            }
+            else 
+            {
+                for (int i = 2; i <= n; i++)
+                {
+                    int fibonacci = firstnum + secondnum;
+                    secondnum = firstnum;
+                    firstnum = fibonacci;
+                    sum += fibonacci;
+                }
+            }
+            answer = sum;
             // end
 
-            return answer;
+                return answer;
         }
         public int Task4(int a, int h, int L)
         {
             int answer = 0;
 
             // code here
-
+            int s = 0;
+            for (int i = 1; i <= L; i++)
+            {
+                int sequence = a + (i - 1) * h;
+                s += sequence;
+            }
+            answer = s;
             // end
 
             return answer;
@@ -51,7 +94,20 @@ namespace Lab2
         {
             double answer = 0;
 
+
             // code here
+
+            double ch = 0, zn = 1;
+            double elem;
+            int i = 1;
+            do
+            {
+                ch += i;
+                zn *= x;
+                elem = ch / zn;
+                answer += elem;
+                i++;
+            } while (elem > 0.0001);
 
             // end
 
@@ -62,10 +118,25 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            if (S >= L)
+            {
+                return answer;
+            }
+            else
+            {
+                int initialQuantity = S;
+                int time = h;
+                while (initialQuantity <= L)
+                {
+                    initialQuantity *= 2;
+                    time += h;
+                }
+                answer = time;
+            }
 
-            // end
+                // end
 
-            return answer;
+                return answer;
         }
         public (double a, int b, int c) Task7(double S, double I)
         {
@@ -74,8 +145,28 @@ namespace Lab2
             int c = 0;
 
             // code here
-
-            // end
+            double KM = S;
+            for (int i = 1; i <= 7; i++)
+            {
+                KM += KM + (I / 100);
+            }
+            a = KM;
+            double limitKM = 100;
+            double initialKm = S;
+            int days = 1;
+            for (; initialKm < limitKM; days++)
+            {
+                initialKm += S + (I / 100);
+            }
+            b = days;
+            double km = S;
+            int days2 = 1;
+            for (; km > 42; days2++)
+            {
+                km = km + (I / 100);
+            }
+            c = days;
+                // end
 
             return (a, b, c);
         }
@@ -85,10 +176,19 @@ namespace Lab2
             double SY = 0;
 
             // code here
-
+                // double x = a;
+                // double result;
+                // int i = 1;
+                // double exp = x;
+                // for (; a < b; a += h)
+                // {
+                // result = (2 * i + 1) * x;
+                //     i++;
+                //     x = a;
+                // }
             // end
 
-            return (SS, SY);
+                return (SS, SY);
         }
     }
 }

@@ -77,20 +77,22 @@ namespace Lab2
         {
             int answer = 0;
 
-            // code here
             int s = 0;
             int num = 0;
-            for (int i = 1; s < L; i++)
+
+            for (int i = 1; ; i++)                 // ← quitamos s<L del header
             {
                 int sequence = a + (i - 1) * h;
-                s += sequence;
-                num ++;
-            }
-            answer = num;
-            // end
+                if (s + sequence > L) break;       // ← si me paso, corto
 
+                s += sequence;
+                num++;
+            }
+
+            answer = num;
             return answer;
         }
+
         public double Task5(double x)
         {
             double answer = 0.0;
@@ -192,6 +194,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

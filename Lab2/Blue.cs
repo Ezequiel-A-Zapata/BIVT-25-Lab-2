@@ -33,11 +33,11 @@ namespace Lab2
             // code here
             int num = 5;
             int fact = 1;
-            int first = -1
+            int first = -1;
             for (int i = 1; i <= n; i++)
             {
-                answer = first * ( num / fact)
-                first *= fisrt
+                answer = first * (double) num / fact;
+                first *= first;
                 num *= 5;
                 fact *= i;
             }
@@ -166,7 +166,7 @@ namespace Lab2
             {
                 km = km + (I / 100);
             }
-            c = days;
+            c = days2;
                 // end
 
             return (a, b, c);
@@ -193,5 +193,6 @@ namespace Lab2
         }
     }
 }
+
 
 

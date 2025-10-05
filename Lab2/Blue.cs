@@ -28,20 +28,19 @@ namespace Lab2
         }
         public double Task2(int n)
         {
-            double answer = 0;
+            double answer = 0.0;
 
-            // code here
-            int num = 5;
-            int fact = 1;
-            int first = -1;
+            double pow = 1.0; // 5^0
+            int fact = 1;     // 0! (iremos desde i=1)
+            int sign = -1;    // (-1)^1: primer término negativo
+
             for (int i = 1; i <= n; i++)
             {
-                answer = first * (double) num / fact;
-                first *= first;
-                num *= 5;
-                fact *= i;
+                pow *= 5.0;   // 5^i
+                fact *= i;    // i!
+                answer += sign * (pow / fact);
+                sign *= -1;   // alterna el signo
             }
-            // end
 
             return answer;
         }
@@ -193,6 +192,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

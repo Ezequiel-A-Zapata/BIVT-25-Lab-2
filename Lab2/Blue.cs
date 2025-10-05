@@ -32,13 +32,15 @@ namespace Lab2
 
             // code here
             int num = 5;
-            int fact = 0;
+            int fact = 1;
+            int first = -1
             for (int i = 1; i <= n; i++)
             {
+                answer = first * ( num / fact)
+                first *= fisrt
                 num *= 5;
-                fact += i;
+                fact *= i;
             }
-            answer = num / fact;
             // end
 
             return answer;
@@ -48,29 +50,26 @@ namespace Lab2
             long answer = 0;
 
             // code here
-
-            int sum = 0;
-            int firstnum = 1;
-            int secondnum = 0;
-            if (n == 0)
+            if (n <= 0)
             {
                 answer = 0;
             }
-            else if (n == 1)
+            else
             {
-                answer = 1;
-            }
-            else 
-            {
-                for (int i = 2; i <= n; i++)
+                long sum = 0;
+                long a = 0;
+                long b = 1;
+
+                for (int i = 0; i < n; i++)
                 {
-                    int fibonacci = firstnum + secondnum;
-                    secondnum = firstnum;
-                    firstnum = fibonacci;
-                    sum += fibonacci;
+                    sum += a;
+                    long next = a + b;
+                    a = b;
+                    b = next;
                 }
+
+                answer = sum;
             }
-            answer = sum;
             // end
 
                 return answer;
@@ -81,39 +80,40 @@ namespace Lab2
 
             // code here
             int s = 0;
-            for (int i = 1; i <= L; i++)
+            int num = 0;
+            for (int i = 1; s < L; i++)
             {
                 int sequence = a + (i - 1) * h;
                 s += sequence;
+                num ++;
             }
-            answer = s;
+            answer = num;
             // end
 
             return answer;
         }
         public double Task5(double x)
         {
-            double answer = 0;
-
-
+            double answer = 0.0;
             // code here
-
-            double ch = 0, zn = 1;
-            double elem;
+            double ch = 0.0, zn = 1.0;
+            double elem = ch / zn;  // 0 al inicio
             int i = 1;
+
             do
             {
-                ch += i;
-                zn *= x;
-                elem = ch / zn;
-                answer += elem;
-                i++;
-            } while (elem > 0.0001);
-
+                ch += i;        
+                zn *= x;        
+                answer += elem; 
+                elem = ch / zn; 
+                i++;           
+            }
+            while (elem > 0.0001);
             // end
 
             return answer;
         }
+
         public int Task6(int h, int S, int L)
         {
             int answer = 0;
@@ -126,8 +126,8 @@ namespace Lab2
             else
             {
                 int initialQuantity = S;
-                int time = h;
-                while (initialQuantity <= L)
+                int time = 0;
+                while (initialQuantity < L)
                 {
                     initialQuantity *= 2;
                     time += h;
@@ -135,9 +135,9 @@ namespace Lab2
                 answer = time;
             }
 
-                // end
+            // end
 
-                return answer;
+            return answer;
         }
         public (double a, int b, int c) Task7(double S, double I)
         {
@@ -193,4 +193,5 @@ namespace Lab2
         }
     }
 }
+
 

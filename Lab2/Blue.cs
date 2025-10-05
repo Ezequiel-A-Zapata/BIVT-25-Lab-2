@@ -146,32 +146,44 @@ namespace Lab2
             int b = 0;
             int c = 0;
 
-            // code here
+            // factor de crecimiento diario
+            double factor = 1.0 + I / 100.0;
+
+            // a) kilómetros tras 7 días
             double KM = S;
             for (int i = 1; i <= 7; i++)
             {
-                KM += KM + (I / 100);
+                KM *= factor;              // <- antes: KM += KM + (I/100)
             }
             a = KM;
-            double limitKM = 100;
-            double initialKm = S;
-            int days = 1;
-            for (; initialKm < limitKM; days++)
+
+            // b) días hasta alcanzar al menos 100 km
+            double limitKM = 100.0;
+            double current = S;
+            int days = 0;                  // <- empezar en 0
+            while (current < limitKM)
             {
-                initialKm += S + (I / 100);
+                current *= factor;         // <- antes: initialKm += S + (I/100)
+                days++;
+                // (opcional) protección si factor <= 0
+                if (factor <= 0) break;
             }
             b = days;
-            double km = S;
-            int days2 = 1;
-            for (; km < 42; days2++)
+
+            // c) días hasta alcanzar al menos 42 km
+            double current2 = S;
+            int days2 = 0;                 // <- empezar en 0
+            while (current2 < 42.0)
             {
-                km = km + (I / 100);
+                current2 *= factor;        // <- antes: km = km + (I/100)
+                days2++;
+                if (factor <= 0) break;
             }
             c = days2;
-                // end
 
             return (a, b, c);
         }
+
         public (double SS, double SY) Task8(double a, double b, double h)
         {
             double SS = 0;
@@ -194,6 +206,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

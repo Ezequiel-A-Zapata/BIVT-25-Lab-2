@@ -162,7 +162,7 @@ namespace Lab2
             b = days;
             double km = S;
             int days2 = 1;
-            for (; km > 42; days2++)
+            for (; km < 42; days2++)
             {
                 km = km + (I / 100);
             }
@@ -193,3 +193,4 @@ namespace Lab2
         }
     }
 }
+

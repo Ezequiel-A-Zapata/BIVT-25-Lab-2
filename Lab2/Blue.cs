@@ -169,7 +169,6 @@ namespace Lab2
             }
             b = days;   // <- devolver solo la cantidad de días
 
-            // (c) días hasta alcanzar al menos 42 km
             double current2 = S;
             int days2 = 0;
             while (current2 < 42.0)
@@ -205,6 +204,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

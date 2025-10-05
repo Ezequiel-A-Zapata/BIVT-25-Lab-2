@@ -162,7 +162,7 @@ namespace Lab2
             double current = S;
             int days = 0;
             while (current < 100.0)
-        {
+            {
                 current *= factor; // crecimiento porcentual
                 days++;            // SOLO incremento en 1 día
             }
@@ -180,7 +180,6 @@ namespace Lab2
 
             return (a, b, c);
         }
-
 
         public (double SS, double SY) Task8(double a, double b, double h)
         {
@@ -204,6 +203,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

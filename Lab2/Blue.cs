@@ -146,10 +146,10 @@ namespace Lab2
             int b = 0;
             int c = 0;
 
-            // Detecta automáticamente si I es fracción (<=1) o porcentaje (>1)
-            double factor = (Math.Abs(I) <= 1.0) ? 1.0 + I : 1.0 + I / 100.0;
+            // SIEMPRE porcentaje: I = 0.1 => 0.1%
+            double factor = 1.0 + I / 100.0;
 
-            // (a) suma de lo corrido en 7 días
+            // (a) suma de lo recorrido en 7 días
             double day = S;
             double total7 = 0.0;
             for (int i = 1; i <= 7; i++)
@@ -167,8 +167,9 @@ namespace Lab2
                 current *= factor;
                 days++;
             }
-            b = days;   // <- devolver solo la cantidad de días
+            b = days;
 
+            // (c) días hasta alcanzar al menos 42 km
             double current2 = S;
             int days2 = 0;
             while (current2 < 42.0)
@@ -204,6 +205,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

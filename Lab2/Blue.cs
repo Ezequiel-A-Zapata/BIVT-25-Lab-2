@@ -146,29 +146,30 @@ namespace Lab2
             int b = 0;
             int c = 0;
 
-            double factor = 1.0 + I / 100.0; // crecimiento porcentual por día
+            // Detecta automáticamente si I es fracción (<=1) o porcentaje (>1)
+            double factor = (Math.Abs(I) <= 1.0) ? 1.0 + I : 1.0 + I / 100.0;
 
             // (a) suma de lo corrido en 7 días
             double day = S;
             double total7 = 0.0;
             for (int i = 1; i <= 7; i++)
             {
-                total7 += day;   // acumulo lo de este día
-                day *= factor;   // preparo el siguiente día
+                total7 += day;
+                day *= factor;
             }
             a = total7;
 
-            // (b) días necesarios para alcanzar al menos 100 km
+            // (b) días hasta alcanzar al menos 100 km
             double current = S;
             int days = 0;
             while (current < 100.0)
             {
-                current *= factor; // crecimiento porcentual
-                days++;            // SOLO incremento en 1 día
+                current *= factor;
+                days++;
             }
-            b = days;              // <<< asegúrate de NO multiplicar ni transformar esto
+            b = days;   // <- devolver solo la cantidad de días
 
-            // (c) días necesarios para alcanzar al menos 42 km
+            // (c) días hasta alcanzar al menos 42 km
             double current2 = S;
             int days2 = 0;
             while (current2 < 42.0)
@@ -180,6 +181,7 @@ namespace Lab2
 
             return (a, b, c);
         }
+
 
         public (double SS, double SY) Task8(double a, double b, double h)
         {
@@ -203,6 +205,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

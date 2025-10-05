@@ -146,36 +146,35 @@ namespace Lab2
             int b = 0;
             int c = 0;
 
-            // factor de crecimiento diario
             double factor = 1.0 + I / 100.0;
 
-            // a) kilómetros tras 7 días
-            double KM = S;
+            // (a) suma de kilómetros en 7 días (no solo el día 7)
+            double day = S;
+            double total7 = 0.0;
             for (int i = 1; i <= 7; i++)
             {
-                KM *= factor;              // <- antes: KM += KM + (I/100)
+                total7 += day;   // acumulás lo corrido ese día
+                day *= factor;   // actualizás para el día siguiente
             }
-            a = KM;
+            a = total7;
 
-            // b) días hasta alcanzar al menos 100 km
-            double limitKM = 100.0;
+            // (b) días hasta alcanzar al menos 100 km
             double current = S;
-            int days = 0;                  // <- empezar en 0
-            while (current < limitKM)
+            int days = 0;
+            while (current < 100.0)
             {
-                current *= factor;         // <- antes: initialKm += S + (I/100)
+                current *= factor;
                 days++;
-                // (opcional) protección si factor <= 0
-                if (factor <= 0) break;
+                if (factor <= 0) break; // protección
             }
             b = days;
 
-            // c) días hasta alcanzar al menos 42 km
+            // (c) días hasta alcanzar al menos 42 km
             double current2 = S;
-            int days2 = 0;                 // <- empezar en 0
+            int days2 = 0;
             while (current2 < 42.0)
             {
-                current2 *= factor;        // <- antes: km = km + (I/100)
+                current2 *= factor;
                 days2++;
                 if (factor <= 0) break;
             }
@@ -206,6 +205,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

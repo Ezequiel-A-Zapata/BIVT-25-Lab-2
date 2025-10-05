@@ -31,19 +31,20 @@ namespace Lab2
             double answer = 0.0;
 
             double pow = 1.0; // 5^0
-            int fact = 1;     // 0! (iremos desde i=1)
-            int sign = -1;    // (-1)^1: primer término negativo
+            int fact = 1;     // 0!
+            int sign = -1;    // (-1)^1
 
             for (int i = 1; i <= n; i++)
             {
-                pow *= 5.0;   // 5^i
-                fact *= i;    // i!
+                pow *= 5.0;        // 5^i
+                fact *= i;         // i!
                 answer += sign * (pow / fact);
-                sign *= -1;   // alterna el signo
+                sign *= -1;        // alternar signo
             }
 
             return answer;
         }
+
         public long Task3(int n)
         {
             long answer = 0;
@@ -192,6 +193,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

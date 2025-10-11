@@ -181,23 +181,22 @@ namespace Lab2
             double SS = 0;
             double SY = 0;
 
-            code here
-                double x = a;
-                double result;
-                int i = 1;
-                double exp = x;
-                for (; a < b; a += h)
-                {
-                result = (2 * i + 1) * x;
-                    i++;
-                    x = a;
-                }
-            end
+            // code here
+            for (double x = a; x <= b; x += h)
+            {
+                // TODO: calcula SS y SY según tu enunciado
+                // Ejemplo de uso de variables para que compile:
+                double result = x; 
+                SS += result;
+                SY += result;
+            }
+            // end
 
-                return (SS, SY);
+            return (SS, SY);
         }
     }
 }
+
 
 
 

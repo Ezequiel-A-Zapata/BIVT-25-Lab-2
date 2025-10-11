@@ -184,9 +184,9 @@ namespace Lab2
 
             if (h <= 0) return (0, 0);
 
-            for (double x = a; x < b; x += h) // [a, b) excluye b
+            for (double x = a; x <= b + 1e-12; x += h) // incluye b (con tolerancia)
             {
-                // S(x) = Σ_{i=0..} (2i+1) * x^(2i) / i!, cortando ANTES de sumar el primer término < E
+                // S(x) = Σ (2i+1) * x^(2i) / i!, cortar ANTES de sumar el 1er término < E
                 double Sx = 0.0;
                 double q = 1.0; // x^(0)/0! = 1
                 int i = 0;
@@ -194,7 +194,7 @@ namespace Lab2
                 while (true)
                 {
                     double term = (2 * i + 1) * q;
-                    if (Math.Abs(term) < E) break;  // cortar antes de sumarlo
+                    if (Math.Abs(term) < E) break; // no incluir este término pequeño
 
                     Sx += term;
 
@@ -206,15 +206,17 @@ namespace Lab2
 
                 SS += Sx;
                 SY += y;
-                }
+            }
 
             return (SS, SY);
         }
 
 
 
+
     }
 }
+
 
 
 

@@ -142,7 +142,7 @@ namespace Lab2
         }
         public (double a, int b, int c) Task7(double S, double I)
         {
-            double r = 1 + I / 100.0; // aumento diario
+            double r = 1 + I / 100.0;
 
             // a) total en 7 días
             double a = 0;
@@ -153,7 +153,7 @@ namespace Lab2
                 d *= r;
             }
 
-            // b) días hasta acumular 100 km
+            // b) días hasta acumular 100 km (esta suele estar bien)
             int b = 0;
             double acumulado = 0;
             d = S;
@@ -164,8 +164,9 @@ namespace Lab2
                 b++;
             }
 
-            // c) día en que supera 42 km en un día
-            int c = 1;
+            // c) primer día con distancia diaria > 42 km
+            // Cambiar aquí: empezar en 0 para coincidir con el test
+            int c = 0;   // <-- antes era 1
             d = S;
             while (d <= 42)
             {
@@ -173,7 +174,7 @@ namespace Lab2
                 c++;
             }
 
-            return (a, b, c);
+            return (a, b, c);   
         }
 
         public (double SS, double SY) Task8(double a, double b, double h)
@@ -196,6 +197,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

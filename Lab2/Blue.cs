@@ -181,23 +181,24 @@ namespace Lab2
             double SS = 0;
             double SY = 0;
 
-            // code here
-                // double x = a;
-                // double result;
-                // int i = 1;
-                // double exp = x;
-                // for (; a < b; a += h)
-                // {
-                // result = (2 * i + 1) * x;
-                //     i++;
-                //     x = a;
-                // }
-            // end
+            code here
+                double x = a;
+                double result;
+                int i = 1;
+                double exp = x;
+                for (; a < b; a += h)
+                {
+                result = (2 * i + 1) * x;
+                    i++;
+                    x = a;
+                }
+            end
 
                 return (SS, SY);
         }
     }
 }
+
 
 
 

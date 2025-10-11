@@ -181,44 +181,41 @@ namespace Lab2
         {
             double SS = 0.0;
             double SY = 0.0;
-            const double E = 0.0001;
 
             if (h <= 0) return (0, 0);
 
-            // Número de saltos: redondeamos para incluir b si (b-a) es múltiplo de h
-            int n = (int)Math.Round((b - a) / h);
-
-            for (int k = 0; k <= n; k++)
+            for (double x = a; x < b; x += h) // [a, b) excluye b
             {
-                double x = a + k * h;
-
-                // S(x) = sum_{i=0..} (2i+1) * x^{2i} / i!, parar cuando el término < E
+                // S(x) = Σ_{i=0..} (2i+1) * x^(2i) / i!, cortando ANTES de sumar el primer término < E
                 double Sx = 0.0;
-                double q = 1.0; // x^(2*0)/0! = 1
+                double q = 1.0; // x^(0)/0! = 1
                 int i = 0;
 
                 while (true)
                 {
                     double term = (2 * i + 1) * q;
-                    if (Math.Abs(term) < E) break; // no incluir el primer < E
+                    if (Math.Abs(term) < E) break;  // cortar antes de sumarlo
+
                     Sx += term;
 
                     i++;
-                    q *= (x * x) / i; // actualiza x^{2i}/i! sin Math.Pow
+                    q *= (x * x) / i; // q_{i+1} = q_i * x^2 / (i)
                 }
 
                 double y = (1 + 2 * x * x) * Math.Exp(x * x);
 
                 SS += Sx;
                 SY += y;
-            }
+                }
 
             return (SS, SY);
         }
 
 
+
     }
 }
+
 
 
 

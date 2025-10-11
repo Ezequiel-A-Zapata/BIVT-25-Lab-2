@@ -142,49 +142,37 @@ namespace Lab2
         }
         public (double a, int b, int c) Task7(double S, double I)
         {
+            double r = 1 + I / 100.0; // aumento diario
+
+            // a) total en 7 días
             double a = 0;
+            double d = S;
+            for (int i = 1; i <= 7; i++)
+            {
+                a += d;
+                d *= r;
+            }
+
+            // b) días hasta acumular 100 km
             int b = 0;
-            int c = 0;
-
-            double distance = 0;
-            double fist_distance = S;
-            for (int i = 1; i < 7; i++)
+            double acumulado = 0;
+            d = S;
+            while (acumulado < 100)
             {
-                if (i <= 1) distance += fist_distance;
-                if (i >= 2)
-                {
-                    distance = fist_distance + I / 100;
-                }
+                acumulado += d;
+                d *= r;
+                b++;
             }
-            a = distance;
 
-            double km = 0;
-            int day = 1;
-            double initial_km = S;
-            for ( ; km < 100; day++)
+            // c) día en que supera 42 km en un día
+            int c = 1;
+            d = S;
+            while (d <= 42)
             {
-                if (day == 1) km = initial_km;
-                if (day >=2)
-                {
-                    km = initial_km + I / 100;
-                }
+                d *= r;
+                c++;
             }
-            b = day;
 
-            int days = 1;
-            double distances = 0;
-            double fist_distances = S;
-
-            for (; distances < 42; days++)
-            {
-                if (day == 1 ) distances = S;
-                if (day >= 2 )
-                {
-                    distances = distances + I / 100;
-                }
-                
-            }
-            c = days;
             return (a, b, c);
         }
 
@@ -210,6 +198,7 @@ namespace Lab2
         }
     }
 }
+
 
 
 

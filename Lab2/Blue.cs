@@ -181,13 +181,18 @@ namespace Lab2
         {
             double SS = 0.0;
             double SY = 0.0;
+            const double E = 0.0001;
 
             if (h <= 0) return (0, 0);
 
-            // Iteramos x desde a hasta b (incluimos b si cae justo en la malla)
-            for (double x = a; x <= b + 1e-12; x += h)
+            // Número de saltos: redondeamos para incluir b si (b-a) es múltiplo de h
+            int n = (int)Math.Round((b - a) / h);
+
+            for (int k = 0; k <= n; k++)
             {
-                // S(x) = sum_{i=0..} (2i+1) * x^{2i} / i!, cortando cuando el término < E
+                double x = a + k * h;
+
+                // S(x) = sum_{i=0..} (2i+1) * x^{2i} / i!, parar cuando el término < E
                 double Sx = 0.0;
                 double q = 1.0; // x^(2*0)/0! = 1
                 int i = 0;
@@ -195,7 +200,7 @@ namespace Lab2
                 while (true)
                 {
                     double term = (2 * i + 1) * q;
-                    if (Math.Abs(term) < E) break;
+                    if (Math.Abs(term) < E) break; // no incluir el primer < E
                     Sx += term;
 
                     i++;
@@ -211,8 +216,10 @@ namespace Lab2
             return (SS, SY);
         }
 
+
     }
 }
+
 
 
 

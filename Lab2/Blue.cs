@@ -179,24 +179,41 @@ namespace Lab2
 
         public (double SS, double SY) Task8(double a, double b, double h)
         {
-            double SS = 0;
-            double SY = 0;
+            double SS = 0.0;
+            double SY = 0.0;
 
-            // code here
-            for (double x = a; x <= b; x += h)
+            if (h <= 0) return (0, 0);
+
+            // Iteramos x desde a hasta b (incluimos b si cae justo en la malla)
+            for (double x = a; x <= b + 1e-12; x += h)
             {
-                // TODO: calcula SS y SY según tu enunciado
-                // Ejemplo de uso de variables para que compile:
-                double result = x; 
-                SS += result;
-                SY += result;
+                // S(x) = sum_{i=0..} (2i+1) * x^{2i} / i!, cortando cuando el término < E
+                double Sx = 0.0;
+                double q = 1.0; // x^(2*0)/0! = 1
+                int i = 0;
+
+                while (true)
+                {
+                    double term = (2 * i + 1) * q;
+                    if (Math.Abs(term) < E) break;
+                    Sx += term;
+
+                    i++;
+                    q *= (x * x) / i; // actualiza x^{2i}/i! sin Math.Pow
+                }
+
+                double y = (1 + 2 * x * x) * Math.Exp(x * x);
+
+                SS += Sx;
+                SY += y;
             }
-            // end
 
             return (SS, SY);
         }
+
     }
 }
+
 
 
 

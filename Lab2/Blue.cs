@@ -184,9 +184,13 @@ namespace Lab2
 
             if (h <= 0) return (0, 0);
 
-            for (double x = a; x <= b + 1e-12; x += h) // incluye b (con tolerancia)
+            // Iteración por índice entero para cubrir [a, b] de forma robusta
+            for (int k = 0; ; k++)
             {
-                // S(x) = Σ (2i+1) * x^(2i) / i!, cortar ANTES de sumar el 1er término < E
+                double x = a + k * h;
+                if (x > b + 1e-12) break; // incluye b si cae en malla (tolerancia)
+
+                // --- Serie S(x) = Σ (2i+1) * x^(2i) / i! ---
                 double Sx = 0.0;
                 double q = 1.0; // x^(0)/0! = 1
                 int i = 0;
@@ -194,14 +198,16 @@ namespace Lab2
                 while (true)
                 {
                     double term = (2 * i + 1) * q;
-                    if (Math.Abs(term) < E) break; // no incluir este término pequeño
 
+                    // Incluir también el primer término con |term| < E y luego cortar
                     Sx += term;
+                    if (Math.Abs(term) < E) break;
 
                     i++;
                     q *= (x * x) / i; // q_{i+1} = q_i * x^2 / (i)
                 }
 
+                // --- Forma analítica ---
                 double y = (1 + 2 * x * x) * Math.Exp(x * x);
 
                 SS += Sx;
@@ -211,11 +217,9 @@ namespace Lab2
             return (SS, SY);
         }
 
-
-
-
     }
 }
+
 
 
 
